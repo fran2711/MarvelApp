@@ -1,0 +1,25 @@
+  GNU nano 2.0.6              File: .gitignore
+
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-$
+
+## User settings
+xcuserdata/
+
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode$
+*.xcscmblueprint
+*.xccheckout
+
+## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode$
+build/
+DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
+^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
