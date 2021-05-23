@@ -17,4 +17,5 @@ class Constants {
     static let basicUrl = "https://gateway.marvel.com:443/v1/public/"
     static let characters = "characters"
     static let charactersSlash = "characters/"
+    static let orderByName = "name"
 }

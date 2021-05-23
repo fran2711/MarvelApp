@@ -31,15 +31,20 @@ class CharactersListViewModel {
         })
     }
     
-//    func fetchMoreCharacters(offset: Int, orderBy: String, completion: @escaping(Result<Characters, Error>) -> Void) {
-//        ApiConnection.shared.getCharactersList(limit: 50, offset: offset, orderBy: orderBy) { (response) in
-////
-////            response.model.list?.forEach({ (character) in
-////                self.characters.list?.append(character)
-////            })
-////
-//            completion(response)
-//
-//        }
-//    }
+    func fetchMoreCharacters(offset: Int, orderBy: String, completionResponse: @escaping(Result<[Character], Error>) -> Void) {
+        APIConnection.shared.getCharactersList(limit: 50, offset: offset, orderBy: orderBy) { (response) in
+            
+            switch response {
+            case .failure(let error):
+                print(error.localizedDescription)
+                completionResponse(.failure(error))
+                
+            case .success(let apiResponse):
+                if let results = apiResponse.data?.results {
+                    self.characters.append(contentsOf: results)
+                    completionResponse(.success(self.characters))
+                }
+            }
+        }
+    }
 }
