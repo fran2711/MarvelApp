@@ -22,6 +22,8 @@
 		A1BD09932659C0200047813D /* CharactersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BD097A2659BBB60047813D /* CharactersTableViewCell.xib */; };
 		A1BD09942659C0200047813D /* CharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD097B2659BBB60047813D /* CharactersTableViewCell.swift */; };
 		A1BD09A02659D8A80047813D /* LoadMoreActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD099F2659D8A80047813D /* LoadMoreActivityIndicator.swift */; };
+		A1BD09A32659DC440047813D /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD09812659BBB60047813D /* CharacterDetailViewController.swift */; };
+		A1BD09A52659DC480047813D /* CharacterDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1BD09822659BBB60047813D /* CharacterDetailView.storyboard */; };
 		B96AF4BD549426C5B5D2806C /* Pods_MarvelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B222E880899A65012B91514 /* Pods_MarvelApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -241,6 +243,7 @@
 				A1BD09522659A3A00047813D /* LaunchScreen.storyboard in Resources */,
 				A1BD094F2659A3A00047813D /* Assets.xcassets in Resources */,
 				A1BD09932659C0200047813D /* CharactersTableViewCell.xib in Resources */,
+				A1BD09A52659DC480047813D /* CharacterDetailView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1BD098D2659BE2C0047813D /* CharactersListViewModel.swift in Sources */,
+				A1BD09A32659DC440047813D /* CharacterDetailViewController.swift in Sources */,
 				A1BD098B2659BE290047813D /* CharacterDetailViewModel.swift in Sources */,
 				A1BD098F2659BF7F0047813D /* CharactersListViewController.swift in Sources */,
 				A1BD09942659C0200047813D /* CharactersTableViewCell.swift in Sources */,

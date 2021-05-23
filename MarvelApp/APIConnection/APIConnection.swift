@@ -37,7 +37,7 @@ class APIConnection {
         }
     }
     
-    func getCharacterDetail(id: Int, onResult: @escaping(Result<Character, Error>) -> Void) {
+    func getCharacterDetail(id: Int, onResult: @escaping(Result<ApiResponse, Error>) -> Void) {
         if let finalUrl = UtilFunctions.addKeyToUrl(url: Constants.basicUrl + Constants.charactersSlash + String(describing: id)) {
             let request = URLRequest(url: finalUrl)
             session.dataTask(with: request, completionHandler: { data, _, error in
@@ -45,14 +45,14 @@ class APIConnection {
                     print(error.localizedDescription)
                     onResult(.failure(error))
                 } else if let data = data {
-                    var character = Character()
+                    var apiResponse = ApiResponse()
                     do {
-                        character = try JSONDecoder().decode(type(of: character), from: data)
+                        apiResponse = try JSONDecoder().decode(type(of: apiResponse), from: data)
                     } catch {
                         print(error.localizedDescription)
                         onResult(.failure(error))
                     }
-                    onResult(.success(character))
+                    onResult(.success(apiResponse))
                 }
             }).resume()
         }

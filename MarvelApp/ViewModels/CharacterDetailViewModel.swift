@@ -24,8 +24,10 @@ class CharacterDetailViewModel {
             case .failure(let error):
                 print(error.localizedDescription)
                 completionResponse(.failure(error))
-            case .success(let character):
-                self.character = character
+            case .success(let apiResponse):
+                if let results = apiResponse.data?.results, let character = results.first(where: { $0.id == id }) {
+                    self.character =  character
+                }
                 completionResponse(.success(self.character))
             }
         }

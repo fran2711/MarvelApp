@@ -81,5 +81,22 @@ class CharactersListViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let characterId = charactersListViewModel.characters[indexPath.row].id {
+            self.characterId = characterId
+            self.performSegue(withIdentifier: "ShowCharacterDetailSegue", sender: self)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCharacterDetailSegue" {
+            guard let vController: CharacterDetailViewController = segue.destination as? CharacterDetailViewController else {
+                return
+            }
+            vController.characterId = self.characterId
+        }
+    }
 }
 

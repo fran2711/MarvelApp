@@ -44,11 +44,22 @@
                     <connections>
                         <outlet property="activityIndicator" destination="nUc-hU-tr8" id="Goh-Nf-wvq"/>
                         <outlet property="heroesTableView" destination="ijY-PX-byB" id="BXa-bx-pxy"/>
+                        <segue destination="ZBb-NE-flD" kind="show" identifier="ShowCharacterDetailSegue" id="XeA-I7-FVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="94"/>
+        </scene>
+        <!--CharacterDetailView-->
+        <scene sceneID="SeW-S9-klf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CharacterDetailView" id="ZBb-NE-flD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sAh-Mi-Pv7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lDJ-8F-o1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915" y="-3"/>
         </scene>
     </scenes>
     <resources>
