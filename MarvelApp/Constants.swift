@@ -18,4 +18,5 @@ class Constants {
     static let characters = "characters"
     static let charactersSlash = "characters/"
     static let orderByName = "name"
+    static let limit = 50
 }

@@ -15,11 +15,19 @@ class CharactersListViewModel {
     }
     
     var characters = [Character]()
+    var total: Int = 0
+    var offset: Int = 0
     
-    func fetchCharacters(offset: Int, orderBy: String, completionResponse: @escaping(Result<[Character], Error>) -> Void) {
-        APIConnection.shared.getCharactersList(limit: 50, offset: offset, orderBy: orderBy, onResult: { (response) in
+    func fetchCharacters(orderBy: String, completionResponse: @escaping(Result<[Character], Error>) -> Void) {
+        APIConnection.shared.getCharactersList(limit: Constants.limit, offset: offset, orderBy: orderBy, onResult: { (response) in
             switch response {
             case .success(let apiResponse):
+                if let total = apiResponse.data?.total {
+                    self.total = total
+                }
+                
+                self.offset += Constants.limit
+                
                 if let results = apiResponse.data?.results {
                     self.characters = results
                     completionResponse(.success(self.characters))
@@ -31,9 +39,8 @@ class CharactersListViewModel {
         })
     }
     
-    func fetchMoreCharacters(offset: Int, orderBy: String, completionResponse: @escaping(Result<[Character], Error>) -> Void) {
-        APIConnection.shared.getCharactersList(limit: 50, offset: offset, orderBy: orderBy) { (response) in
-            
+    func fetchMoreCharacters(orderBy: String, completionResponse: @escaping(Result<[Character], Error>) -> Void) {
+        APIConnection.shared.getCharactersList(limit: Constants.limit, offset: offset, orderBy: orderBy) { (response) in
             switch response {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -41,6 +48,7 @@ class CharactersListViewModel {
                 
             case .success(let apiResponse):
                 if let results = apiResponse.data?.results {
+                    self.offset += Constants.limit
                     self.characters.append(contentsOf: results)
                     completionResponse(.success(self.characters))
                 }

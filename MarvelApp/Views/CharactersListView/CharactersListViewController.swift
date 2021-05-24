@@ -15,7 +15,6 @@ class CharactersListViewController: UIViewController, UITableViewDelegate, UITab
     
     var loadMoreActivityIndicator: LoadMoreActivityIndicator?
     var charactersListViewModel = CharactersListViewModel()
-    var offset = 0
     let cellId = "CharacterCellId"
     var characterId = 0
     
@@ -32,8 +31,7 @@ class CharactersListViewController: UIViewController, UITableViewDelegate, UITab
     func fetchData() {
         activityIndicator.startAnimating()
         heroesTableView.isUserInteractionEnabled = false
-        charactersListViewModel.fetchCharacters(offset: self.offset, orderBy: "name") { (response) in
-            self.offset += 50
+        charactersListViewModel.fetchCharacters(orderBy: Constants.orderByName) { (response) in
             DispatchQueue.main.async {
                 self.heroesTableView.isUserInteractionEnabled = true
                 self.activityIndicator.stopAnimating()
@@ -70,14 +68,17 @@ class CharactersListViewController: UIViewController, UITableViewDelegate, UITab
 
         // Change 10.0 to adjust the distance from bottom
         if maximumOffset - currentOffset <= 10.0 {
-            self.loadMoreActivityIndicator?.start{
-                self.charactersListViewModel.fetchMoreCharacters(offset: self.offset, orderBy: "name") { (response) in
-                    self.offset += 50
+            scrollView.isUserInteractionEnabled = false
+            self.activityIndicator.startAnimating()
+//            self.loadMoreActivityIndicator?.start{
+                self.charactersListViewModel.fetchMoreCharacters(orderBy: Constants.orderByName) { (response) in
                     DispatchQueue.main.async {
-                        self.loadMoreActivityIndicator?.stop()
+                        self.activityIndicator.stopAnimating()
+                        scrollView.isUserInteractionEnabled = true
+//                        self.loadMoreActivityIndicator?.stop()
                         self.heroesTableView.reloadData()
                     }
-                }
+//                }
             }
         }
     }
